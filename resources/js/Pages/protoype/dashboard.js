@@ -1,7 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Input from "@/Components/Input";
 import { Link, Head } from "@inertiajs/inertia-react";
+
 export default function login() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownTarget = useRef();
+
+    const showSidebar = () => {
+        if (dropdownOpen) {
+            dropdownTarget.current.classlist.remove("active");
+        } else {
+            dropdownTarget.current.classlist.add("active");
+        }
+    };
+
     return (
         <>
             <Head>
@@ -111,23 +123,94 @@ export default function login() {
                         <div className="sidebar-menu">
                             <ul className="menu">
                                 <li className="sidebar-title">Menu</li>
-                                <li className="sidebar-item active">
-                                    <Link
-                                        href={route("dashboard")}
-                                        className="sidebar-link"
+                                <li
+                                    className="sidebar-item has-sub "
+                                    onClick={showSidebar}
+                                >
+                                    <a href="#" className="sidebar-link">
+                                        <i className="bi bi-stack"></i>
+                                        <span>Components</span>
+                                    </a>
+                                    <ul
+                                        className="submenu "
+                                        ref={dropdownTarget}
                                     >
-                                        <i className="bi bi-grid-fill" />
-                                        <span>Dashboard</span>
-                                    </Link>
-                                </li>
-                                <li className="sidebar-item ">
-                                    <Link
-                                        href={route("testing")}
-                                        className="sidebar-link"
-                                    >
-                                        <i className="bi bi-grid-fill" />
-                                        <span>Testing</span>
-                                    </Link>
+                                        <li className="submenu-item">
+                                            <a href="component-alert.html">
+                                                Alert
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-badge.html">
+                                                Badge
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-breadcrumb.html">
+                                                Breadcrumb
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-button.html">
+                                                Button
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-card.html">
+                                                Card
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-carousel.html">
+                                                Carousel
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-collapse.html">
+                                                Collapse
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-dropdown.html">
+                                                Dropdown
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-list-group.html">
+                                                List Group
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-modal.html">
+                                                Modal
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-navs.html">
+                                                Navs
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-pagination.html">
+                                                Pagination
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-progress.html">
+                                                Progress
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-spinner.html">
+                                                Spinner
+                                            </a>
+                                        </li>
+                                        <li className="submenu-item">
+                                            <a href="component-tooltip.html">
+                                                Tooltip
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
